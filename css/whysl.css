@@ -1,0 +1,269 @@
+/* ===================================== */
+/* WHY SRI LANKA SECTION – FIXED CAROUSEL */
+/* ===================================== */
+
+/* Section & Container */
+.why-sri-section {
+    background-color: black;
+    padding: 120px 0;
+    position: relative;
+    overflow: hidden;
+}
+
+.why-container {
+    width: 85%;
+    margin: auto;
+    position: relative;
+}
+
+/* BIG BACKGROUND TITLE */
+.big-bg-title {
+    font-family: var(--font-heading);
+    color: var(--color-text-light);
+    opacity: 0.15;
+    font-size: 180px;
+    font-weight: 800;
+    text-transform: uppercase;
+    position: absolute;
+    top: -150px; 
+    left: 50%;
+    transform: translateX(-50%);
+    pointer-events: none;
+    white-space: nowrap;
+    z-index: 1;
+}
+
+/* GRID */
+.why-grid {
+    display: grid;
+    grid-template-columns: 1fr 1.1fr;
+    gap: 80px;
+    align-items: center;
+    position: relative;
+    z-index: 5;
+}
+
+/* TEXT */
+.why-text {
+    color: #fff;
+    position: relative;
+    z-index: 10;
+}
+
+.why-title {
+    font-size: 3.2rem;
+    font-weight: 700;
+    color: #e8c16f;
+    margin-bottom: 20px;
+}
+
+.why-intro {
+    font-size: 1.15rem;
+    line-height: 1.75;
+    margin-bottom: 25px;
+    opacity: 0.85;
+}
+
+.why-points {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 40px;
+}
+
+.why-points li {
+    font-size: 1.05rem;
+    line-height: 2.3;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+    padding: 10px 0;
+}
+
+.why-points i {
+    color: #e8c16f;
+    margin-right: 10px;
+}
+
+.why-btn {
+    display: inline-block;
+    background: #e8c16f;
+    padding: 14px 28px;
+    border-radius: 4px;
+    font-weight: 700;
+    color: #111;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.why-btn:hover {
+    background: #f5d78a;
+}
+
+/* MAP PANEL */
+.why-map-panel {
+    position: relative;
+    height: 580px; 
+    border-radius: 20px;
+    overflow: hidden;
+}
+
+/* Background overlay */
+.map-bg-overlay {
+    background: url("/images/tea.jpg") center/cover no-repeat;
+    filter: brightness(0.3);
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+}
+
+.why-map-panel::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    border-radius: 20px;
+    background: radial-gradient(ellipse at center, transparent 50%, #0c0c0c 100%);
+    z-index: 1;
+}
+
+/* Map Outline */
+.map-wrapper {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    padding: 20px;
+}
+
+.sri-map-outline {
+    position: absolute;
+    width: 56%;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    opacity: 0.35;
+    filter: drop-shadow(0 0 12px rgba(255,200,0,0.3));
+}
+
+/* IMAGE COLLAGE CAROUSEL */
+.map-collage .carousel-card {
+    position: absolute;
+    border-radius: 6px;
+    border: 2px solid #e8c16f;
+    box-shadow: 0 5px 18px rgba(0,0,0,0.6);
+    overflow: hidden;
+}
+
+/* Scroll container inside each card */
+.carousel-inner {
+    display: flex;
+    flex-wrap: nowrap;
+    gap: 8px;
+    width: max-content;  /* allows the inner to scroll naturally */
+    height: 100%;
+    animation: smooth-scroll 12s linear infinite;
+}
+
+/* Each carousel image */
+.carousel-image {
+    flex: 0 0 auto;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
+/* Hide scrollbar */
+.carousel-inner::-webkit-scrollbar {
+    display: none;
+}
+
+/* Smooth auto-scroll keyframes */
+@keyframes smooth-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); } /* scroll halfway, adjust if more images */
+}
+
+/* Pause on hover */
+.carousel-card:hover .carousel-inner {
+    animation-play-state: paused;
+}
+
+/* COLLAGE POSITIONS */
+.img1 { width: 46%; height: 38%; top: 8%; left: 40%; }
+.img2 { width: 46%; height: 38%; top: 32%; left: 8%; }
+.img3 { width: 38%; height: 30%; bottom: 8%; right: 22%; }
+
+/* ===================================== */
+/* RESPONSIVE FIXES */
+/* ===================================== */
+
+/* Desktop to Tablet (Max-width: 1025px) */
+@media (max-width: 1025px) {
+    /* 🟢 FIX: Title Positioning (Ensure negative top value) */
+    .big-bg-title { 
+        font-size: 120px; 
+        top: -100px; /* Pull up high enough to sit above text block */
+    }
+
+    /* Grid Stacking */
+    .why-grid { 
+        grid-template-columns: 1fr; /* Switch to single column */
+        gap: 50px; 
+    }
+
+    /* Map Panel Sizing */
+    .why-map-panel { 
+        height: 480px; 
+    }
+    
+    /* Map Outline Sizing */
+    .sri-map-outline { 
+        width: 110%; 
+        transform: translate(-50%, -50%) scale(0.95); 
+    }
+}
+
+/* Tablet to Large Mobile (Max-width: 768px) */
+@media (max-width: 768px) {
+    /* 🟢 FIX: Title Positioning */
+    .big-bg-title { 
+        font-size: 80px; 
+        top: -80px; /* Adjusted negative value for smaller screens */
+    }
+
+    .why-title { 
+        font-size: 2.4rem; 
+    }
+
+    /* Image Card Sizing - making them slightly bigger */
+    .img1, .img2, .img3 { 
+        width: 55%; 
+    }
+    
+    .why-map-panel { 
+        height: 400px; 
+    }
+    
+    /* Map Outline Sizing */
+    .sri-map-outline { 
+        width: 100%; 
+        transform: translate(-50%, -50%) scale(1); 
+    }
+}
+
+/* Mobile (Max-width: 550px) */
+@media (max-width: 550px) {
+    /* 🟢 FIX: Title Positioning (Crucial fix: must be negative) */
+    .big-bg-title { 
+        font-size: 62px; 
+        top: -40px; /* Changed from positive 10px to negative 40px */
+    }
+
+    .why-map-panel { 
+        /* Slightly more height than previously set */
+        height: 380px; 
+    }
+
+    /* Smallest screen image card sizing */
+    .img1, .img2, .img3 { 
+        width: 65%; /* Made them a bit wider to fill the space */
+    }
+}

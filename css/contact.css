@@ -1,0 +1,313 @@
+/* ============================================== */
+        /* 1. CSS RESET & GLOBAL VARIABLES */
+        /* ============================================== */
+        *, *::before, *::after {
+            box-sizing: border-box;
+        }
+
+        body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+            margin: 0;
+        }
+
+        ul[role='list'], ol[role='list'] {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+            color: inherit;
+        }
+
+        :root {
+    /* --- COLOR PALETTE (UPDATED) --- */
+    --color-primary: #004D40;     /* NEW: Dark Teal/Pine Green */
+    --color-secondary: #FFB300;   /* NEW: Vibrant Gold/Curry Yellow */
+    --color-tertiary: #ECEFF1;    /* NEW: Very Light Blue-Grey */
+    
+    /* Text Colors */
+    --color-text-dark: #263238;   /* NEW: Dark Slate Grey */
+    --color-text-light: #FFFFFF;
+    
+    /* --- FONTS & TYPOGRAPHY --- */
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Arial', sans-serif;
+    --font-script: 'Dancing Script', cursive; 
+    --font-size-base: 1rem;
+    
+    /* --- SPACING & SIZES --- */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    
+    /* --- SHADOWS & TRANSITIONS --- */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.2);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.35);
+    --transition-fast: 0.2s ease-in-out;
+}
+
+        /* ============================================== */
+        /* 2. BASE STYLES & UTILITIES */
+        /* ============================================== */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--font-body);
+            font-size: var(--font-size-base);
+            color: var(--color-text-dark);
+            line-height: 1.6;
+            /* CRITICAL: Ensure deep dark background */
+            background-color: var(--color-content-bg) !important; 
+            overflow-x: hidden;
+        }
+        
+        /* Ensures the text is readable on the dark background */
+        p { color: var(--color-text-faded); } 
+
+        /* Scrollbar Styles */
+        ::-webkit-scrollbar { width: 8px; }
+        ::-webkit-scrollbar-thumb {
+            background-color: var(--color-primary);
+            border-radius: 4px;
+            border: 2px solid var(--color-tertiary); 
+        }
+        ::-webkit-scrollbar-track { background: var(--color-content-bg); }
+        ::-webkit-scrollbar-thumb:hover { background-color: var(--color-secondary); }
+
+        h1, h2, h3, h4 {
+            font-family: var(--font-heading);
+            color: var(--color-primary); 
+            line-height: 1.2;
+        }
+
+        /* Global Container for centralizing content */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 var(--spacing-sm); 
+        }
+        
+        /* Button Style */
+        .btn {
+            display: inline-block;
+            padding: var(--spacing-xs) var(--spacing-md);
+            border-radius: 5px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition-fast);
+            text-transform: uppercase;
+        }
+
+        .btn-primary {
+            background-color: var(--color-primary);
+            color: var(--color-text-light); 
+            border: 2px solid var(--color-primary);
+        }
+
+        .btn-primary:hover {
+            background-color: var(--color-secondary);
+            border-color: var(--color-secondary);
+        }
+
+        /* Responsive Helper */
+        @media (min-width: 768px) {
+            .container {
+                padding: 0 var(--spacing-md);
+            }
+        }
+
+
+        /* ============================================== */
+/* CONTACT PAGE STYLES */
+/* ============================================== */
+
+/* 1. HERO SECTION FIX FOR FIXED BACKGROUND */
+.contact-hero-fixed .contact-hero-image img {
+    /* Crucial CSS for Parallax/Fixed effect */
+    background-attachment: fixed;
+    object-position: center; 
+}
+
+
+/* 2. CONTACT FORM AND INFO GRID */
+.contact-section {
+    padding: var(--spacing-lg) 0;
+}
+
+.contact-grid {
+    display: grid;
+    grid-template-columns: 2fr 1fr; /* Form takes 2/3, Info takes 1/3 */
+    gap: var(--spacing-lg);
+    background-color: var(--color-tertiary);
+    padding: var(--spacing-lg);
+    border-radius: 10px;
+    box-shadow: var(--shadow-md);
+}
+
+.contact-form-wrapper h3,
+.contact-info-wrapper h3 {
+    font-size: 1.8rem;
+    color: var(--color-primary);
+    margin-bottom: var(--spacing-sm);
+}
+
+/* Form Styles */
+.inquiry-form {
+    display: flex;
+    flex-direction: column;
+}
+
+.form-group {
+    margin-bottom: var(--spacing-sm);
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: var(--color-text-dark);
+    font-size: 0.95rem;
+}
+
+.inquiry-form input[type="text"],
+.inquiry-form input[type="email"],
+.inquiry-form select,
+.inquiry-form textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-family: var(--font-body);
+    font-size: 1rem;
+    transition: border-color var(--transition-fast);
+}
+
+.inquiry-form input:focus,
+.inquiry-form select:focus,
+.inquiry-form textarea:focus {
+    border-color: var(--color-secondary);
+    outline: none;
+}
+
+.inquiry-form textarea {
+    resize: vertical;
+}
+
+.contact-submit-btn {
+    align-self: flex-start;
+    margin-top: var(--spacing-xs);
+    border: none;
+}
+
+/* Contact Details */
+.contact-details {
+    margin-bottom: var(--spacing-md);
+}
+.contact-details p {
+    font-size: 1rem;
+    margin-bottom: 10px;
+    color: var(--color-text-dark);
+}
+.contact-details i {
+    color: var(--color-secondary);
+    margin-right: 10px;
+    width: 20px;
+    text-align: center;
+}
+
+/* Map Placeholder */
+.map-placeholder {
+    height: 300px;
+    background-color: #ddd;
+    border-radius: 5px;
+    overflow: hidden;
+    box-shadow: var(--shadow-sm);
+}
+.map-placeholder iframe {
+    display: block;
+}
+
+/* 3. FAQ SECTION */
+
+.faq-accordion-container {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.faq-item {
+    border: 1px solid #ddd;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    overflow: hidden;
+    background-color: var(--color-text-light);
+}
+
+.faq-question {
+    width: 100%;
+    padding: 15px 20px;
+    background-color: var(--color-tertiary);
+    color: var(--color-primary);
+    font-weight: 700;
+    text-align: left;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 1rem;
+}
+
+.faq-question:hover {
+    background-color: #e9e9e9;
+}
+
+.faq-answer {
+    padding: 0 20px;
+    background-color: var(--color-text-light);
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+}
+
+.faq-answer p {
+    padding: 15px 0;
+    margin: 0;
+    color: var(--color-text-dark);
+}
+
+.faq-question i {
+    transition: transform 0.3s ease;
+}
+.faq-answer[style*="max-height"] + .faq-question i {
+    transform: rotate(180deg);
+}
+
+/* ============================================== */
+/* RESPONSIVENESS FOR CONTACT PAGE */
+/* ============================================== */
+
+/* Tablets and large phones */
+@media (max-width: 992px) {
+    .contact-grid {
+        grid-template-columns: 1fr; /* Stack form and info vertically */
+    }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+    .contact-grid {
+        padding: var(--spacing-md);
+    }
+
+    .contact-form-wrapper h3,
+    .contact-info-wrapper h3 {
+        font-size: 1.5rem;
+    }
+    
+    .faq-question {
+        padding: 12px 15px;
+        font-size: 0.9rem;
+    }
+}

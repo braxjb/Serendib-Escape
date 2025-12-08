@@ -1,0 +1,304 @@
+/* ============================================== */
+/* 1. CSS RESET & GLOBAL VARIABLES */
+/* ============================================== */
+*, *::before, *::after {
+    /* Use border-box model for easy sizing and layout */
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+ul[role='list'], ol[role='list'] {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    /* --- COLOR PALETTE --- */
+    --color-primary: #1E3A52; /* Dark Navy Blue */
+    --color-secondary: #D4AF37; /* Gold/Metallic Amber */
+    --color-tertiary: #F4F4F4; /* Light Grey */
+    
+    /* Text Colors */
+    --color-text-dark: #333333;
+    --color-text-light: #FFFFFF;
+    
+    /* --- FONTS & TYPOGRAPHY --- */
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Arial', sans-serif;
+    --font-script: 'Dancing Script', cursive; /* NEW SCRIPT FONT */
+    --font-size-base: 1rem;
+    
+    /* --- SPACING & SIZES --- */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    
+    /* --- SHADOWS & TRANSITIONS --- */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-fast: 0.2s ease-in-out;
+}
+
+/* ============================================== */
+/* 2. BASE STYLES & UTILITIES */
+/* ============================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-text-light);
+    overflow-x: hidden;
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary);
+    border-radius: 4px;
+    border: 2px solid var(--color-primary); 
+}
+::-webkit-scrollbar-track {
+    background: var(--color-primary);
+}
+::-webkit-scrollbar-thumb:hover {
+    background-color: #f1d380;
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+/* Global Container for centralizing content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm); 
+}
+
+/* Button Reset/Style (Use for CTAs) */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    border: 2px solid var(--color-secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Responsive Helper */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+/* ============================================== */
+/* NAVBAR STYLES (Transparent & Responsive) */
+/* ============================================== */
+/* NOTE: Requires 'global.css' to be loaded first for variables and context. */
+
+/* NAVBAR BASE (Transparent) */
+.navbar {
+    position: fixed; /* Requires parent (.hero-image-section) to have position: relative */
+    top: 0;
+    width: 100%;
+    background-color: transparent; 
+    box-shadow: none; 
+    z-index: 1000;
+    transition: background-color var(--transition-fast), box-shadow var(--transition-fast), padding var(--transition-fast);
+    padding: var(--spacing-sm) 0;
+    
+    flex-shrink: 0; 
+    width: 100%; 
+}
+
+/* --- NEW SCROLLED STATE CLASS --- */
+.navbar.scrolled {
+    background-color: rgba(129, 139, 148, 0.95); /* Opaque background (95% opacity of --color-primary) */
+    box-shadow: var(--shadow-md);
+    padding: var(--spacing-xs) 0; /* Slightly tighter padding when scrolled */
+}
+
+.nav-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* LOGO & TEXT */
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 10px; 
+}
+
+.serendib-logo {
+    height: 45px;
+    width: auto; 
+}
+
+.logo h1 {
+    font-size: 1.5rem;
+    color: var(--color-text-light);
+    margin: 0;
+    font-weight: 500;
+}
+
+.logo span {
+    color: var(--color-secondary);
+}
+
+/* NAVIGATION MENU LINKS (Desktop) */
+.nav-menu {
+    display: flex;
+    list-style: none;
+    flex-grow: 1; 
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+    gap: var(--spacing-md);
+    
+    /* Hidden by default (Mobile-first) */
+    display: none; 
+}
+
+.nav-menu a {
+    color: var(--color-text-light); 
+    font-weight: 600;
+    font-size: 1rem;
+    padding: 0.5rem 0;
+    position: relative;
+}
+
+.nav-menu a:hover {
+    color: var(--color-secondary);
+}
+
+/* UTILITIES (Search, Inquire, Hamburger) */
+.nav-utilities {
+    display: flex;
+    align-items: center;
+    gap: var(--spacing-sm);
+}
+
+.search-icon,
+.btn-inquire {
+    /* Hidden by default (Mobile-first) */
+    display: none; 
+}
+
+.search-icon {
+    background: none;
+    border: none;
+    color: var(--color-text-light);
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.btn-inquire {
+    background-color: transparent;
+    color: var(--color-text-light);
+    border: 1px solid var(--color-text-light); 
+    padding: 8px 15px;
+    font-size: 0.85rem;
+}
+
+.btn-inquire:hover {
+    background-color: rgba(255, 255, 255, 0.15);
+}
+
+/* Hamburger for Mobile */
+.hamburger {
+    display: flex; 
+    flex-direction: column;
+    cursor: pointer;
+}
+
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--color-text-light);
+    margin: 3px 0;
+    border-radius: 2px;
+}
+
+/* DROPDOWN STYLES */
+.dropdown {
+    position: relative; 
+}
+
+.dropdown-content {
+    display: none;
+    position: absolute; 
+    top: 100%;
+    left: 0;
+    
+    background-color: var(--color-primary);
+    min-width: 200px;
+    box-shadow: var(--shadow-md);
+    z-index: 1001;
+    padding: var(--spacing-xs) 0;
+    border-radius: 0 0 5px 5px; 
+}
+
+.dropdown-content a {
+    color: var(--color-text-light);
+    padding: 10px var(--spacing-md);
+    display: block;
+    font-weight: 400;
+}
+
+.dropdown-content a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    color: var(--color-secondary);
+}
+
+.dropdown:hover .dropdown-content {
+    display: block;
+}
+
+/* ============================================== */
+/* DESKTOP MEDIA QUERIES (min-width: 992px) */
+/* ============================================== */
+@media (min-width: 992px) {
+    /* Navbar Visibility */
+    .nav-menu {
+        display: flex; /* Show menu */
+    }
+    .search-icon,
+    .btn-inquire {
+        display: inline-block; /* Show utilities */
+    }
+    .hamburger {
+        display: none; /* Hide hamburger */
+    }
+}

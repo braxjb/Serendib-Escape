@@ -1,0 +1,112 @@
+/* ================================================================= */
+/* 13. TESTIMONIALS SECTION */
+/* ================================================================= */
+
+.testimonials-section {
+    background-color: #111111; /* Slightly lighter black/charcoal for visual break from pure black */
+    padding: var(--spacing-lg) 0;
+    text-align: center;
+}
+
+.testimonials-header {
+    margin-bottom: var(--spacing-lg);
+}
+
+.testimonials-title {
+    color: var(--color-text-light); /* White title */
+    font-size: 2.5rem;
+    margin-bottom: var(--spacing-xs);
+}
+
+.testimonials-subtitle {
+    color: var(--color-tertiary); /* Gray text */
+    font-size: 1.1rem;
+    max-width: 600px;
+    margin: 0 auto var(--spacing-md);
+}
+
+/* --- Testimonial Grid --- */
+.testimonials-grid {
+    display: grid;
+    /* Desktop: 3 equal columns */
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--spacing-lg);
+    margin-bottom: var(--spacing-lg);
+}
+
+.testimonial-card {
+    background-color: var(--color-primary); /* Pure black card background */
+    padding: var(--spacing-md);
+    border-radius: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.5);
+    transition: transform 0.3s ease;
+    height: 100%; /* Ensure all cards are the same height */
+    text-align: left;
+}
+
+.testimonial-card:hover {
+    transform: translateY(-5px); /* Subtle lift on hover */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.7);
+}
+
+.testimonial-stars {
+    color: var(--color-secondary); /* Gold stars */
+    font-size: 1.5rem;
+    margin-bottom: var(--spacing-sm);
+    letter-spacing: 2px;
+}
+
+.testimonial-quote {
+    color: var(--color-text-light);
+    font-style: italic;
+    font-size: 1.1rem;
+    line-height: 1.6;
+    margin-bottom: var(--spacing-md);
+    quotes: "“" "”"; /* Set proper quotation marks */
+}
+
+.testimonial-quote::before {
+    content: open-quote;
+    font-size: 2.5rem;
+    color: var(--color-secondary);
+    line-height: 0;
+    vertical-align: -0.2em;
+    margin-right: 5px;
+}
+
+.testimonial-author {
+    color: var(--color-tertiary);
+    font-weight: 600;
+}
+
+/* --- Button for Reviews --- */
+.view-all-reviews-btn {
+    display: inline-block;
+    color: var(--color-primary);
+    background-color: var(--color-secondary);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: 5px;
+    font-weight: bold;
+    text-transform: uppercase;
+    transition: var(--transition-fast);
+}
+
+.view-all-reviews-btn:hover {
+    opacity: 0.9;
+}
+
+
+/* --- Responsiveness for Testimonials --- */
+@media (max-width: 991px) {
+    .testimonials-grid {
+        /* Tablet: 2 columns */
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 576px) {
+    .testimonials-grid {
+        /* Mobile: 1 column stack */
+        grid-template-columns: 1fr;
+    }
+}

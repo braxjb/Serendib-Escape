@@ -1,0 +1,288 @@
+/* ============================================== */
+/* 11. UNFORGETTABLE TOUR PACKAGES SECTION (Reversed Layout) */
+/* ============================================== */
+
+.packages-section {
+    /* Set the background image */
+    background-image: 
+        /* CRITICAL: Dark overlay for text readability */
+        linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), 
+        /* The user-provided image */
+        url('/images/fishingbackdrop.jpg'); 
+        
+    /* Ensure the image covers the entire section */
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed; /* Image scrolls with the section */
+    
+    padding-top: 150px; 
+    padding-bottom: var(--spacing-lg);
+    position: relative;
+    overflow: hidden; 
+}
+
+/* --- LARGE BACKGROUND TITLE --- */
+.packages-title {
+    font-family: var(--font-heading);
+    color: var(--color-text-light); /* White */
+    z-index: 9; /* CRITICAL: Ensure it is behind the content (z-index 10) */
+    opacity: 0.15; /* Subtly faded */
+    
+    /* SCALING AND POSITIONING */
+    position: absolute;
+    width: 100%;
+     top: var(--spacing-sm);  /* Position it high in the section */
+    text-align: center;
+    box-sizing: border-box;
+    overflow: hidden; 
+    white-space: nowrap; /* Prevents wrapping */
+    
+    /* Mobile First: Large VW sizing */
+    font-size: 16vw; 
+    letter-spacing: 0.05em;
+    user-select: none; /* Prevents selecting the giant text */
+}
+
+/* Larger screen sizing */
+@media (min-width: 768px) {
+    .packages-title {
+        font-size: 10rem; 
+        letter-spacing: 0.2em;
+        top: 20px;
+    }
+}
+@media (min-width: 1200px) {
+    .packages-title {
+        font-size: 12rem;
+    }
+}
+
+/* --- TOP BLACK FADE --- */
+.packages-section::before {
+    content: "";
+    position: absolute;
+    top: 0; 
+    left: 0;
+    width: 100%;
+    height: 300px; /* How tall the fade is */
+    background: linear-gradient(
+        to bottom, /* Fades downward from the top edge */
+        #000 0%, /* Starts solid black at the very top */
+        rgba(0,0,0,0.7) 40%,
+        rgba(0,0,0,0) 100% /* Fully transparent at 300px down */
+    );
+    z-index: 9;
+    pointer-events: none;
+}
+
+/* --- BOTTOM BLACK FADE (Your Confirmed Code) --- */
+.packages-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px; /* How tall the fade is */
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.7) 60%,
+        #000 100%
+    );
+    z-index: 9;
+    pointer-events: none;
+}
+
+/* Ensure content is visible */
+.packages-grid-wrapper,
+.packages-text-container {
+    position: relative;
+    z-index: 10;
+}
+
+/* --- GRID LAYOUT: Cards left, Text right (Desktop) --- */
+.packages-grid-wrapper {
+    display: grid;
+    /* Define columns: Cards (Wide) | Text (Narrow) */
+    grid-template-columns: 2fr 1fr; 
+    align-items: flex-start; 
+    gap: var(--spacing-lg);
+}
+
+/* --- RIGHT COLUMN: STICKY TEXT & SEARCH (Fixed in place) --- */
+.packages-text-container {
+    padding: 0; 
+    text-align: left;
+    
+    /* CRITICAL FIX: Make the container sticky to keep the content in view */
+    position: sticky; 
+    top: 100px; /* Aligns to the top of the viewport when scrolling */
+    
+    /* Give it vertical room to appear over the content */
+    height: 100vh; 
+    
+    /* Align text content to the top (like the destinations section) */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: flex-start;
+}
+
+.packages-section-title {
+    color: var(--color-secondary); 
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: var(--spacing-sm);
+    
+    /* REMOVE: animation: subtle-float ... */
+    
+    /* 1. Define the animation that runs */
+    animation-name: scroll-float-move; 
+    animation-duration: 1s; /* Duration doesn't matter for scroll-timeline */
+    animation-timing-function: linear; 
+    animation-fill-mode: both;
+    
+    /* 2. Link the animation to the root scrollbar */
+    animation-timeline: scroll(root block);
+    
+    will-change: transform; 
+}
+
+/* Keyframes for scroll-linked movement */
+@keyframes scroll-float-move {
+    /* At 0% of scroll (top of page), the element is slightly pulled up */
+    0% {
+        transform: translateY(-20px);
+    }
+    /* At 50% of scroll, the element is in its normal position */
+    50% {
+        transform: translateY(0);
+    }
+    /* At 100% of scroll (bottom of page), the element is slightly pushed down */
+    100% {
+        transform: translateY(10px);
+    }
+}
+.packages-section-desc {
+    color: var(--color-tertiary);
+    font-size: 1rem;
+    margin-bottom: var(--spacing-lg);
+}
+
+/* Search Box Styles (Reused) */
+.packages-search-box {
+    display: flex;
+    border: 1px solid var(--color-tertiary);
+    border-radius: 5px;
+    overflow: hidden;
+    margin-bottom: var(--spacing-md);
+    box-shadow: 0 0 5px rgba(255, 255, 255, 0.1);
+}
+
+.packages-search-box input {
+    background-color: #1a1a1a; 
+    color: var(--color-text-light);
+    border: none;
+    padding: var(--spacing-xs) var(--spacing-sm);
+    flex-grow: 1;
+    font-size: 1rem;
+    outline: none;
+}
+
+.packages-search-box .search-btn {
+    background-color: var(--color-secondary); 
+    border: none;
+    color: var(--color-primary); 
+    padding: var(--spacing-xs) var(--spacing-sm);
+    cursor: pointer;
+    font-size: 1rem;
+    transition: var(--transition-fast);
+}
+
+.view-all-link {
+    display: inline-block;
+    color: var(--color-secondary);
+    font-weight: 600;
+    margin-top: var(--spacing-sm);
+    border-bottom: 2px solid var(--color-secondary);
+    padding-bottom: 3px;
+    transition: var(--transition-fast);
+}
+
+
+/* --- LEFT COLUMN: Horizontal Auto-Scrolling Carousel --- */
+.packages-card-scroller {
+    overflow: hidden; /* Hide scrollbar for seamless animation */
+    padding: var(--spacing-md) 0;
+}
+
+.packages-grid {
+    display: flex; 
+    gap: var(--spacing-md);
+    
+    /* CRITICAL FOR AUTO-SCROLL */
+    width: 200%; 
+    animation: packages-scroll-loop 60s linear infinite; /* Adjust time for speed */
+}
+
+/* Pause animation on hover */
+.packages-grid:hover {
+    animation-play-state: paused;
+}
+
+/* Define the horizontal movement animation */
+@keyframes packages-scroll-loop {
+    0% {
+        transform: translateX(0);
+    }
+    100% {
+        transform: translateX(-50%); /* Moves exactly the length of the original card set */
+    }
+}
+
+/* --- Package Card Styles (Horizontal Scroll) --- */
+.package-card {
+    flex-shrink: 0; 
+    width: 280px; 
+    height: 400px; /* Maintain consistent card size */
+    position: relative;
+    border-radius: 15px; 
+    overflow: hidden;
+    box-shadow: 0 5px 15px rgba(255, 255, 255, 0.1); 
+    transition: transform 0.3s ease;
+}
+
+.package-card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.package-content {
+    /* Overlay content styling (use light colors for dark background) */
+    position: absolute;
+    bottom: 0;
+    padding: var(--spacing-md);
+    color: white;
+    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    width: 100%;
+}
+.package-content h3 {
+    font-size: 1.2rem;
+    margin-bottom: 5px;
+}
+.package-content p {
+    font-size: 0.9rem;
+    margin-bottom: 5px;
+}
+.btn-secondary {
+    display: inline-block;
+    padding: 5px 12px;
+    background-color: white;
+    color: black;
+    border-radius: 5px;
+    text-transform: uppercase;
+    font-weight: bold;
+    font-size: 0.8rem;
+    margin-top: 10px;
+}   

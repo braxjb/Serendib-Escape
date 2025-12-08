@@ -1,0 +1,312 @@
+/* Base section styling */
+.events-section {
+  background-color: #050505;
+  padding: var(--spacing-lg) 0;
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Large background title: HAPPENING */
+.events-large-title {
+  font-family: var(--font-heading);
+  font-size: 8rem;
+  letter-spacing: 0.15em;
+  user-select: none;
+  text-transform: uppercase;
+  font-weight: 900;
+  margin: 0 auto var(--spacing-md);
+  padding: 0 10px;
+  background-image: url('/images/sunset2.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-fill-color: transparent;
+  opacity: 0.8;
+}
+
+/* Header */
+.events-header {
+  margin-bottom: var(--spacing-lg);
+  z-index: 2;
+  text-align: center;
+}
+
+.events-title {
+  color: var(--color-text-light);
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-xs);
+}
+
+.events-subtitle {
+  color: var(--color-tertiary);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+/* Admin form area */
+.event-submission-area {
+  max-width: 600px;
+  margin: 2rem auto 3rem auto;
+  padding: var(--spacing-md);
+  background-color: #1a1a1a;
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.event-form {
+  display: grid;
+  gap: 1rem;
+}
+
+.event-form input[type="text"],
+.event-form input[type="date"],
+.event-form input[type="url"],
+.event-form textarea {
+  width: 100%;
+  padding: 10px 15px;
+  border: 1px solid var(--color-tertiary);
+  background-color: #050505;
+  color: var(--color-text-light);
+  border-radius: 4px;
+  font-size: 1rem;
+  transition: border-color 0.3s;
+}
+
+.event-form input:focus,
+.event-form textarea:focus {
+  border-color: var(--color-secondary);
+  outline: none;
+}
+
+.event-form textarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.form-submit-btn {
+  background-color: var(--color-secondary);
+  color: var(--color-primary);
+  font-weight: 700;
+  padding: 12px 25px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s, opacity 0.3s;
+  text-transform: uppercase;
+}
+
+.form-submit-btn:hover:not(:disabled) {
+  background-color: #f1d380;
+}
+
+.form-submit-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.event-message {
+  font-size: 0.9rem;
+  margin-top: 0.5rem;
+  text-align: center;
+}
+
+/* Masonry grid */
+.events-grid {
+  column-count: 3;      /* Pinterest-style columns */
+  column-gap: 20px;
+  max-width: 1100px;    /* tightened width for smaller cards */
+  margin: 0 auto;
+  padding: 0 20px;
+}
+
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 20px;
+}
+
+
+.event-admin-controls {
+  margin-top: 10px;
+  display: flex;
+  gap: 10px;
+}
+
+.event-edit-btn,
+.event-delete-btn {
+  background-color: #333;
+  color: #FFD46B;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.3s;
+}
+
+.event-edit-btn:hover,
+.event-delete-btn:hover {
+  background-color: #555;
+}
+
+
+/* Tall cards */
+.event-card-tall .event-card-image {
+  height: 320px;
+}
+.event-card-tall .event-card-content {
+  min-height: 160px;
+}
+
+/* Wide cards */
+.event-card-wide .event-card-image {
+  height: 180px;
+}
+.event-card-wide .event-card-content {
+  padding: 1.5rem;
+}
+
+/* Small cards */
+.event-card-small .event-card-image {
+  height: 140px;
+}
+.event-card-small .event-card-content {
+  font-size: 0.9rem;
+}
+
+/* Event card */
+.event-card {
+  position: relative;
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.5);
+  background: #111; /* dark base beneath image */
+  transform: translateZ(0); /* smoother hover */
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.event-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
+}
+
+/* Image sizing: smaller look */
+.event-card-image {
+  width: 100%;
+  height: 220px;           /* fixed height for uniform small cards */
+  object-fit: cover;       /* crop to maintain aspect */
+  display: block;
+}
+
+/* Content overlay */
+.event-card-content {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  padding: var(--spacing-md);
+  color: var(--color-text-light);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  min-height: 40%;  /* ensures text area isn’t too tall */
+  text-align: left;
+  /* stronger shadow for readability */
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.8), 0 0 10px rgba(0, 0, 0, 0.5);
+  /* soft gradient for contrast */
+  background: linear-gradient(to top, rgba(0,0,0,0.65), rgba(0,0,0,0.1) 60%, transparent);
+}
+
+.event-date {
+  font-size: 0.9rem;
+  opacity: 0.9;
+  margin-bottom: 5px;
+}
+
+.event-name {
+  font-size: 1.2rem;      /* smaller title for tighter cards */
+  font-weight: 700;
+  margin-bottom: 6px;
+}
+
+.event-desc {
+  font-size: 0.95rem;
+  opacity: 0.95;
+  margin-bottom: 10px;
+}
+
+/* Link */
+.event-link {
+  color: #FFD46B;
+  font-weight: 600;
+  border-bottom: 2px solid #FFD46B;
+  text-decoration: none;
+  width: fit-content;
+}
+
+.event-link:hover {
+  color: var(--color-text-light);
+  border-color: var(--color-text-light);
+}
+
+/* Contact button */
+.events-contact-btn {
+  display: inline-block;
+  color: var(--color-primary);
+  background-color: var(--color-secondary);
+  padding: var(--spacing-sm) var(--spacing-lg);
+  border-radius: 5px;
+  font-weight: bold;
+  text-transform: uppercase;
+  font-size: 1.1rem;
+  transition: var(--transition-fast);
+  z-index: 2;
+  margin-top: var(--spacing-lg);
+}
+
+.events-contact-btn:hover {
+  background-color: white;
+}
+
+/* Responsive tweaks */
+@media (max-width: 1200px) {
+  .events-grid {
+    max-width: 1000px;
+  }
+  .event-card-image {
+    height: 210px;
+  }
+}
+
+@media (max-width: 991px) {
+  .events-large-title {
+    font-size: 6rem;
+  }
+  .events-grid {
+    column-count: 2;
+  }
+  .event-card-image {
+    height: 200px;
+  }
+}
+
+@media (max-width: 768px) {
+  .events-grid {
+    column-count: 1;
+    padding: 0 var(--spacing-sm);
+  }
+  .events-large-title {
+    font-size: 4rem;
+    letter-spacing: 0.1em;
+  }
+  .event-card-image {
+    height: 190px;
+  }
+}

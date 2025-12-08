@@ -1,0 +1,296 @@
+/* ============================================== */
+/* 1. CSS RESET & GLOBAL VARIABLES */
+/* ============================================== */
+*, *::before, *::after {
+    /* Use border-box model for easy sizing and layout */
+    box-sizing: border-box;
+}
+
+body, h1, h2, h3, h4, p, figure, blockquote, dl, dd {
+    margin: 0;
+}
+
+ul[role='list'], ol[role='list'] {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: inherit;
+}
+
+:root {
+    /* --- COLOR PALETTE --- */
+    --color-primary: #1E3A52; /* Dark Navy Blue */
+    --color-secondary: #D4AF37; /* Gold/Metallic Amber */
+    --color-tertiary: #F4F4F4; /* Light Grey */
+    
+    /* Text Colors */
+    --color-text-dark: #333333;
+    --color-text-light: #FFFFFF;
+    
+    /* --- FONTS & TYPOGRAPHY --- */
+    --font-heading: 'Georgia', serif;
+    --font-body: 'Arial', sans-serif;
+    --font-script: 'Dancing Script', cursive; /* NEW SCRIPT FONT */
+    --font-size-base: 1rem;
+    
+    /* --- SPACING & SIZES --- */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 2rem;
+    --spacing-lg: 3rem;
+    
+    /* --- SHADOWS & TRANSITIONS --- */
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+    --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+    --transition-fast: 0.2s ease-in-out;
+}
+
+/* ============================================== */
+/* 2. BASE STYLES & UTILITIES */
+/* ============================================== */
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-body);
+    font-size: var(--font-size-base);
+    color: var(--color-text-dark);
+    line-height: 1.6;
+    background-color: var(--color-text-light);
+    overflow-x: hidden;
+}
+
+/* Track (the main bar area) */
+::-webkit-scrollbar {
+    width: 8px; /* Width of the entire scrollbar */
+}
+
+/* Thumb (the movable part) */
+::-webkit-scrollbar-thumb {
+    background-color: var(--color-secondary); /* Gold/Yellow color */
+    border-radius: 4px; /* Rounded corners */
+    /* Add a subtle dark border/shadow to separate it from the background */
+    border: 2px solid var(--color-primary); 
+}
+
+/* Track background */
+::-webkit-scrollbar-track {
+    background: var(--color-primary); /* Dark background for the track */
+}
+
+/* On hover, make it slightly brighter */
+::-webkit-scrollbar-thumb:hover {
+    background-color: #f1d380; /* Lighter gold on hover */
+}
+
+h1, h2, h3, h4 {
+    font-family: var(--font-heading);
+    color: var(--color-primary);
+    line-height: 1.2;
+}
+
+/* Global Container for centralizing content */
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--spacing-sm); 
+}
+
+/* Button Reset/Style (Use for CTAs) */
+.btn {
+    display: inline-block;
+    padding: var(--spacing-xs) var(--spacing-md);
+    border-radius: 5px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: var(--transition-fast);
+    text-transform: uppercase;
+}
+
+.btn-primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-light);
+    border: 2px solid var(--color-secondary);
+}
+
+.btn-primary:hover {
+    background-color: var(--color-primary);
+    border-color: var(--color-primary);
+}
+
+/* Responsive Helper */
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--spacing-md);
+    }
+}
+
+
+/* ============================================== */
+/* 3. HERO SECTION STRUCTURE */
+/* ============================================== */
+.hero-image-section {
+    height: 100vh;
+    width: 100%;
+    position: relative; 
+    overflow: hidden; 
+    
+    /* Image Settings */
+    background-image: url("/images/image.png"); 
+    background-size: cover;
+    background-position: center center;
+    background-attachment: fixed; /* Optional parallax effect */
+}
+
+.image-overlay-content {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 10; 
+    
+    /* Dark Overlay & Flex structure for centering content */
+    background-color: rgba(0, 0, 0, 0.45); 
+    display: flex;
+    flex-direction: column; 
+    align-items: center; /* Centers content horizontally */
+}
+
+
+
+
+/* ============================================== */
+/* 5. HERO TEXT STYLES (Centering) */
+/* ============================================== */
+/* .hero-text { */
+    /* Takes up all available vertical space remaining after the navbar */
+    /* flex-grow: 1; 
+    width: 100%;
+    max-width: 800px; */
+    
+    /* Centers content inside */
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center; 
+    align-items: center; 
+    text-align: center;
+    padding: var(--spacing-md);
+} */
+
+.hero-text {
+    flex-grow: 1; 
+    width: 100%;
+    max-width: 1200px; /* INCREASED max-width to allow text to spread wider */
+    
+    /* CRITICAL: Align content to the start (left) */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start; /* ALIGN TO LEFT */
+    text-align: left; /* ALIGN TEXT TO LEFT */
+    
+    /* Adjusted padding to push content further left from the edge */
+    padding: var(--spacing-sm); 
+    padding-left: var(--spacing-xs); /* Base left padding (2rem) */
+}
+
+/* NEW: Welcome Text Style */
+.hero-welcome {
+    font-family: var(--font-script);
+    font-size: 3.5rem;
+    color: var(--color-text-light);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-xs);
+}
+
+.hero-headline {
+    font-size: 4rem; 
+    color: var(--color-text-light);
+    text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-sm);
+    text-transform: uppercase;
+    line-height: 1;
+    max-width: 90%; /* Ensure headline doesn't hit the right edge on mobile */
+}
+
+.hero-subheadline {
+    font-size: 1.15rem;
+    color: var(--color-text-light);
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.5);
+    margin-bottom: var(--spacing-lg);
+    max-width: 500px; /* Adjusted fixed max-width for better left alignment */
+}
+
+/* CTA Button Styles (Unchanged) */
+.hero-cta {
+    font-size: 1rem;
+    padding: var(--spacing-sm) var(--spacing-lg);
+    font-weight: 700;
+    background-color: transparent;
+    border: 2px solid var(--color-text-light);
+    color: var(--color-text-light);
+}
+
+.hero-cta:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-color: var(--color-text-light);
+    color: var(--color-text-light);
+}
+
+/* ============================================== */
+/* HERO → BLACK FADE TRANSITION */
+/* ============================================== */
+
+.hero-image-section::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 300px; /* how tall the fade is */
+    background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0) 0%,
+        rgba(0,0,0,0.7) 60%,
+        #000 100%
+    );
+    z-index: 9; /* sits above image but below text */
+    pointer-events: none;
+}
+
+
+
+
+/* ============================================== */
+/* 7. DESKTOP MEDIA QUERIES (min-width: 992px) */
+/* ============================================== */
+@media (min-width: 992px) {
+    /* Navbar Visibility */
+    .nav-menu {
+        display: flex;
+    }
+    .search-icon,
+    .btn-inquire {
+        display: inline-block; 
+    }
+    .hamburger {
+        display: none; 
+    }
+
+    /* Hero Headline Size */
+    .hero-headline {
+        font-size: 4.5rem;
+    }
+    .hero-subheadline {
+        font-size: 1.5rem;
+    }
+}
+
+
+
+
+
