@@ -19,10 +19,10 @@ a {
 }
 
 :root {
-    /* --- COLOR PALETTE --- */
-    --color-primary: #1E3A52; 
-    --color-secondary: #D4AF37; 
-    --color-tertiary: #F4F4F4;
+    /* --- COLOR PALETTE (UNCHANGED VARS FOR CONSISTENCY) --- */
+    --color-primary: #1E3A52; /* Dark Navy Blue - used as an accent now */
+    --color-secondary: #D4AF37; /* Gold/Metallic Amber */
+    --color-tertiary: #F4F4F4; /* Light Grey */
     
     /* Text Colors */
     --color-text-dark: #333333;
@@ -48,14 +48,16 @@ a {
 
 html {
     scroll-behavior: smooth;
+    overflow-x: hidden;
 }
 
+/* ✦ DARK THEME: Pure Black Background ✦ */
 body {
     font-family: var(--font-body);
     font-size: var(--font-size-base);
-    color: var(--color-text-dark);
+    color: var(--color-tertiary);
     line-height: 1.6;
-    background-color: var(--color-text-light);
+    background-color: #000; /* Pure Black Background */
     overflow-x: hidden;
 }
 
@@ -69,7 +71,7 @@ body {
     border: 2px solid var(--color-primary);
 }
 ::-webkit-scrollbar-track {
-    background: var(--color-primary);
+    background: #000;
 }
 ::-webkit-scrollbar-thumb:hover {
     background-color: #f1d380;
@@ -78,7 +80,7 @@ body {
 /* Headings */
 h1, h2, h3, h4 {
     font-family: var(--font-heading);
-    color: var(--color-primary);
+    color: var(--color-secondary);
     line-height: 1.2;
 }
 
@@ -121,7 +123,6 @@ h1, h2, h3, h4 {
 /* ============================================== */
 
 /* ===== HERO SECTION ===== */
-
 .contact-hero {
     position: relative;
     width: 100%;
@@ -141,25 +142,17 @@ h1, h2, h3, h4 {
     left: 0;
     width: 100%;
     height: 100%;
-    background: rgba(10, 20, 40, 0.5);
-}
-
-.contact-hero-content {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    text-align: center;
-}
-
-.contact-hero-content h1 {
-    font-size: 4rem;
-    font-weight: 800;
-    color: var(--color-secondary);
-    letter-spacing: 4px;
+    background: rgba(0, 0, 0, 0.5); /* Use black overlay */
 }
 
 /* ===== Breadcrumb ===== */
+.destination-section-padding {
+    padding: 40px 8%; 
+}
+.destination-section-padding-bottom {
+    padding: 0 8% 80px;
+}
+
 .breadcrumb {
     color: var(--color-tertiary);
     font-size: 18px;
@@ -173,30 +166,50 @@ h1, h2, h3, h4 {
 }
 
 /* ===== Page Title Section ===== */
-
-.destination-title-section h2 {
-    color: var(--color-primary);
+.section-intro-content {
+    text-align:center; 
+    padding: 0 8%;
 }
 
-.destination-title-section p {
-    color: var(--color-primary);
+.image-text-title {
+    font-size: 120px;
+    font-weight: 800;
+    background: url('/images/image.png') center/cover no-repeat;
+    -webkit-background-clip: text;
+    color: transparent;
+    text-transform: uppercase;
+    margin-bottom: 20px;
 }
 
-/* ===== Grid Layout ===== */
+.section-subtitle {
+    font-size: 32px; 
+    margin-bottom: 15px;
+    color: var(--color-secondary);
+}
 
+.section-description {
+    max-width: 950px; 
+    margin: 0 auto 50px; 
+    line-height: 1.7; 
+    font-size: 18px;
+    color: var(--color-tertiary);
+}
+
+/* ===== Grid Layout (8 cards) ===== */
 .destinations-grid {
-    padding: 0 8% 80px;
+    background-color: #000; /* Ensure section background is black */
 }
 
 .dest-grid {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    /* Desktop: 4 columns */
+    grid-template-columns: repeat(4, 1fr); 
     gap: var(--spacing-md);
 }
 
 .dest-card {
-    width: 280px; 
-    height: 400px; /* Maintain consistent card size */
+    width: 100%; 
+    height: 400px; 
     position: relative;
     border-radius: 15px; 
     overflow: hidden;
@@ -206,7 +219,7 @@ h1, h2, h3, h4 {
 
 .dest-card:hover {
     transform: translateY(-6px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.45);
+    box-shadow: 0 8px 25px rgba(212, 175, 55, 0.2);
 }
 
 .dest-card img {
@@ -219,8 +232,8 @@ h1, h2, h3, h4 {
     position: absolute;
     bottom: 0;
     padding: var(--spacing-md);
-    color: white;
-    background: linear-gradient(to top, rgba(0,0,0,0.8), rgba(0,0,0,0));
+    color: var(--color-text-light);
+    background: linear-gradient(to top, rgba(0,0,0,0.95), rgba(0,0,0,0)); /* Deeper black gradient */
     width: 100%;
 }
 
@@ -228,6 +241,7 @@ h1, h2, h3, h4 {
     font-size: 1.2rem;
     margin-bottom: 5px;
     text-align: center;
+    color: var(--color-secondary);
 }
 
 .dest-card-content p {
@@ -238,84 +252,94 @@ h1, h2, h3, h4 {
 }
 
 .dest-btn {
-    display: inline-block;
+    display: block;
+    width: fit-content;
+    margin: 10px auto 0;
     padding: 5px 12px;
-    background-color: transparent;
-    color: var(--color-text-light);
-    border: 1px solid var(--color-text-light); 
+    color: var(--color-secondary);
+    border: 1px solid var(--color-secondary); 
     border-radius: 5px;
     text-transform: uppercase;
     font-weight: bold;
     font-size: 0.8rem;
-    margin-top: 10px;
-    align-self: center;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    background-color: transparent;
 }
 
 .dest-btn:hover {
-    opacity: 0.7;
+    background-color: var(--color-secondary);
+    color: var(--color-primary);
+    opacity: 1;
 }
 
 /* ============================================== */
-/* 3. RESPONSIVE DESIGN */
+/* 3. RESPONSIVE DESIGN (REWRITTEN) */
 /* ============================================== */
 
-/* Tablets */
+/* Tablets (1200px and below) */
 @media (max-width: 1200px) {
+    /* Switch to a 3-column layout */
     .dest-grid {
         grid-template-columns: repeat(3, 1fr);
+        gap: var(--spacing-md);
     }
 }
 
-/* Large Phones */
-@media (max-width: 900px) {
+/* Large Phones/Small Tablets (768px and below) */
+@media (max-width: 768px) {
+    /* Hero title size reduction */
     .contact-hero-content h1 {
         font-size: 3rem;
     }
+    
+    /* Text-filled title reduction */
+    .image-text-title {
+        font-size: 80px !important;
+    }
+    
+    /* Switch to a 2-column layout */
     .dest-grid {
         grid-template-columns: repeat(2, 1fr);
+        gap: var(--spacing-sm);
     }
-    .dest-card img {
-        height: 240px;
-    }
-
-    .image-text-title {
-        font-size: 90px !important;
+    
+    /* Adjust card height slightly */
+    .dest-card {
+        height: 350px;
     }
 }
 
-/* Mobile */
-@media (max-width: 600px) {
-
+/* Mobile Phones (576px and below) */
+@media (max-width: 576px) {
     .contact-hero {
-        height: 50vh;
+        height: 60vh;
     }
-
-    .contact-hero-content h1 {
-        font-size: 2.4rem;
-    }
-
-    .breadcrumb {
-        font-size: 16px;
-    }
-
+    
+    /* Text-filled title reduction */
     .image-text-title {
-        font-size: 60px !important;
+        font-size: 50px !important;
+        margin-bottom: 10px;
     }
 
-    .destination-title-section h2 {
-        font-size: 24px;
+    .section-subtitle {
+        font-size: 20px;
     }
 
-    .destination-title-section p {
-        font-size: 16px;
-    }
-
+    /* Stack cards in a single column */
     .dest-grid {
         grid-template-columns: 1fr;
         gap: var(--spacing-sm);
     }
 
-    .dest-card img {
-        height: 220px;
+    /* Final card size adjustment for single column stack */
+    .dest-card {
+        height: 250px; 
+    }
+    
+    /* Center the breadcrumb and section padding */
+    .destination-section-padding,
+    .destination-section-padding-bottom {
+        padding-left: var(--spacing-md);
+        padding-right: var(--spacing-md);
     }
 }
