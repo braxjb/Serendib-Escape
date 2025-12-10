@@ -264,32 +264,46 @@ h1, h2, h3, h4 {
 
 
 
-
 /* ============================================== */
-/* 7. DESKTOP MEDIA QUERIES (min-width: 992px) */
+/* HERO TEXT MOBILE ADJUSTMENTS (max-width: 991px) */
 /* ============================================== */
-@media (min-width: 992px) {
-    /* Navbar Visibility */
-    .nav-menu {
-        display: flex;
+@media (max-width: 991px) {
+    .hero-text {
+        /* Align content to the center on smaller screens for better visual balance */
+        align-items: center; 
+        text-align: center;
+        /* Add more top padding to push content away from the navbar */
+        padding-top: 6rem;
+        padding-bottom: var(--spacing-md);
     }
-    .search-icon,
-    .btn-inquire {
-        display: inline-block; 
+    
+    .hero-welcome {
+        /* Scale down the script font for mobile */
+        font-size: 2.5rem; 
     }
-    .hamburger {
-        display: none; 
-    }
-
-    /* Hero Headline Size */
+    
     .hero-headline {
-        font-size: 4.5rem;
+        /* Scale down the main headline for mobile */
+        font-size: 2.8rem; 
+        max-width: 95%; /* Adjust max width */
     }
+    
     .hero-subheadline {
-        font-size: 1.5rem;
+        /* Center the subheadline text */
+        max-width: 90%; 
+        font-size: 1rem;
+        margin-bottom: var(--spacing-md);
+    }
+    
+    .hero-cta {
+        padding: var(--spacing-xs) var(--spacing-lg); /* Slightly smaller button on mobile */
+    }
+
+    .hero-image-section {
+        /* Ensure background attachment is removed on mobile for better performance */
+        background-attachment: scroll; 
     }
 }
-
 
 
 
