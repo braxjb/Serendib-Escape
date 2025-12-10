@@ -3,10 +3,11 @@
 /* ============================================== */
 .destinations-section {
     background-color: black;
-    padding-top: 80px;
+    padding-top: 120px;
     padding-bottom: var(--spacing-lg);
     position: relative;
     overflow: hidden;
+    z-index: 5;
 }
 
 /* ============================================== */
@@ -193,4 +194,15 @@
 
 .destination-card:hover {
     transform: translateY(-5px);
+}
+
+/* ============================================== */
+/* RESPONSIVENESS FIXES (Mobile: Max-width: 991px)*/
+/* ============================================== */
+@media (max-width: 991px) {
+    /* Adjusting Title Positioning and Sizing for Mobile View */
+    .destinations-title {
+        /* Pushed down further to separate it from the top edge and align better with content */
+        top: 80px; 
+    }
 }
