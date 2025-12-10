@@ -87,7 +87,7 @@
 <section class="hero-image-section" role="banner" aria-label="Sri Lanka Tropical Travel Hero Section">
     <div class="image-overlay-content">
 
-        <!-- ======================= NAVBAR ======================= -->
+     <!-- ======================= NAVBAR ======================= -->
         <nav class="navbar" role="navigation" aria-label="Main Navigation">
     <div class="container nav-container">
 
@@ -134,8 +134,8 @@
             <h1 class="hero-headline">Serendib Escape</h1>
 
             <p class="hero-subheadline">
-                Explore Sri Lanka’s tropical beauty — from misty mountains to golden beaches, 
-                exotic wildlife, and ancient cultural wonders. Begin your unforgettable island adventure today.
+                Discover the tropical beauty of Serendib - from golden beaches to the misty mountains,
+                exotic wildlife, rich cultural wonders. Enter your tropical escape with us.
             </p>
 
             <a href="tours.html" class="btn btn-primary hero-cta">EXPLORE TOURS</a>
@@ -160,7 +160,7 @@
                  LEFT TEXT CONTENT
             ======================== -->
             <div class="why-text">
-                <h3 class="why-title">The World's Best Island Holiday</h3>
+                <h3 class="why-title">The pearl of the Indian Ocean</h3>
 
                 <p class="why-intro">
                     The island nation of <strong>Serendib</strong> captivates every traveler.  
@@ -245,9 +245,9 @@
             <h2>Sri Lanka Is Yours To Explore</h2>
 
             <p>
-                Sri Lanka is a tropical paradise filled with breathtaking landscapes, rich culture, 
-                ancient heritage, and unforgettable experiences. Discover a curated selection of 
-                destinations that offer adventure, relaxation, and inspiration.
+                Sri Lanka is a tropical haven, brimmed with breathtaking landscapes, 
+                golden beaches, rich culture and unforgettable experiences. Discover 
+                curated destinations that offer adventure, relaxation and an escape from reality.
             </p>
 
             <div class="search-box">
@@ -483,8 +483,8 @@
             <h2 class="packages-section-title">Unforgettable Tour Packages</h2>
 
             <p class="packages-section-desc">
-                Designed to deliver the deepest cultural immersion and authentic Sri Lankan experiences.
-                Explore our curated tours and find your perfect journey.
+                Our curated tours are designed to deliver the deepest cultural immersion and authentic Sri Lankan 
+                experiences. Explore our selections and find the journey that suits your dream.
             </p>
 
             <!-- Search Box -->
@@ -734,7 +734,7 @@
                 123 Galle Road, Colombo 03, Sri Lanka
             </address>
             <p class="footer-phone">
-                <strong>Phone:</strong> <a href="tel:+94712345678">+94 71 234 5678</a>
+                <strong>Phone:</strong> <a href="tel:+94781030655">+94 78 103 0655</a>
             </p>
             <p class="footer-email">
                 <strong>Email:</strong> <a href="mailto:info@serendibescape.com">info@serendibescape.com</a>
@@ -745,12 +745,12 @@
         <div class="footer-col footer-links">
             <h4 class="footer-heading">Quick Links</h4>
             <ul>
-                <li><a href="#hero-section">Home</a></li>
-                <li><a href="#destinations-section">Destinations</a></li>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="destination.html">Destinations</a></li>
                 <li><a href="#packages-section">Packages</a></li>
                 <li><a href="#events-section">Special Events</a></li>
                 <li><a href="#">About Us</a></li>
-                <li><a href="#">Contact</a></li>
+                <li><a href="contact.html">Contact</a></li>
             </ul>
         </div>
 
@@ -787,7 +787,7 @@
             <div class="footer-social">
                 <h4 class="footer-heading">Follow Us</h4>
                 <div class="social-icons">
-                    <a href="#" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
+                    <a href="https://www.facebook.com/serendibescape" aria-label="Facebook" target="_blank" rel="noopener noreferrer"><i class="fab fa-facebook-f"></i></a>
                     <a href="#" aria-label="Instagram" target="_blank" rel="noopener noreferrer"><i class="fab fa-instagram"></i></a>
                     <a href="#" aria-label="LinkedIn" target="_blank" rel="noopener noreferrer"><i class="fab fa-linkedin-in"></i></a>
                     <a href="#" aria-label="YouTube" target="_blank" rel="noopener noreferrer"><i class="fab fa-youtube"></i></a>
@@ -808,19 +808,49 @@
 
 </main>
 <script>
-    // Get the navbar element
-    const navbar = document.querySelector('.navbar');
+    document.addEventListener('DOMContentLoaded', () => {
+        // --- 1. NAVBAR SCROLL CLASS (FIXES ICON COLOR) ---
+        const navbar = document.querySelector('.navbar');
 
-    // Function to handle the scroll event
-    window.addEventListener('scroll', () => {
-        // Check if the user has scrolled beyond a certain point (e.g., 50px)
-        if (window.scrollY > 50) {
-            navbar.classList.add('scrolled');
-        } else {
-            navbar.classList.remove('scrolled');
+        // Function to handle the scroll event
+        window.addEventListener('scroll', () => {
+            // Check if the user has scrolled beyond 50px
+            if (window.scrollY > 50) {
+                // This class triggers the background color and the dynamic bar color
+                navbar.classList.add('scrolled'); 
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+        });
+
+        // --- 2. HAMBURGER MENU TOGGLE ---
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        if (hamburger && navMenu) {
+            hamburger.addEventListener('click', () => {
+                // Toggles the 'active' class on the hamburger icon (CSS animation)
+                hamburger.classList.toggle('active'); 
+                
+                // Toggles the 'active' class on the menu (CSS visibility/overlay)
+                navMenu.classList.toggle('active'); 
+            });
+
+            // Optional: Close the menu when a link is clicked (improves UX)
+            const navLinks = navMenu.querySelectorAll('a');
+            navLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    // Only close if the menu is currently open
+                    if (navMenu.classList.contains('active')) {
+                         hamburger.classList.remove('active');
+                         navMenu.classList.remove('active');
+                    }
+                });
+            });
         }
     });
 </script>
 </body>
-
+</html>
+</body>
 </html>
