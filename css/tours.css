@@ -19,6 +19,7 @@
     padding-bottom: var(--spacing-lg);
     position: relative;
     overflow: hidden; 
+    z-index: 5;
 }
 
 /* --- LARGE BACKGROUND TITLE --- */
@@ -286,3 +287,132 @@
     font-size: 0.8rem;
     margin-top: 10px;
 }   
+
+
+/* ============================================== */
+/* MOBILE RESPONSIVENESS (MAX-WIDTH: 768px) */
+/* ============================================== */
+/* ============================================== */
+/* MOBILE/TABLET RESPONSIVENESS (MAX-WIDTH: 991px) */
+/* ============================================== */
+@media (max-width: 991px) {
+    
+    /* SECTION & CONTAINER ADJUSTMENTS */
+    .packages-section {
+        /* Standard section padding for mobile */
+        padding-top: 80px; 
+        padding-bottom: 80px; 
+        background-attachment: scroll; /* Disable fixed background for performance */
+    }
+
+    /* 1. OVERRIDE DESKTOP GRID & STACK CONTENT VERTICALLY */
+    .packages-grid-wrapper {
+        display: flex; 
+        flex-direction: column; /* Stacks the two main children vertically */
+        gap: 0;
+        width: 100%; /* Ensure it uses full width for centering */
+        padding: 0;
+    }
+
+    /* TYPOGRAPHY SCALING */
+    .packages-title {
+        font-size: 100px; 
+        top: 0;
+    }
+    
+    /* ========================================= */
+    /* 2. TEXT/CONTROLS CONTAINER (REORDERING & CENTERING) */
+    /* ========================================= */
+    .packages-text-container {
+        order: 1; /* CRITICAL: Forces the text to appear before the carousel */
+        
+        /* Override Desktop Sticky/Height */
+        position: static; 
+        height: auto; 
+        
+        /* Centering the content */
+        align-items: center; /* Centers items if they are children of this flex container */
+        text-align: center; /* CRITICAL: Centers inline text content */
+        
+        /* Adjust for clean edges */
+        padding: 0 var(--spacing-md); 
+        margin-bottom: var(--spacing-lg);
+    }
+    
+    /* Ensure text blocks are constrained for readability */
+    .packages-section-title,
+    .packages-section-desc {
+        max-width: 500px; 
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    .packages-section-title {
+        font-size: 2rem;
+    }
+
+    /* Ensure search box is constrained and centered */
+    .packages-search-box {
+        width: 100%; 
+        max-width: 400px; /* Cap width for better aesthetic */
+        margin-left: auto;
+        margin-right: auto;
+    }
+    
+    /* ========================================= */
+    /* 3. CAROUSEL SCROLLING SETUP (MANUAL SCROLL) */
+    /* ========================================= */
+    .packages-card-scroller {
+        order: 2; /* Forces the carousel to appear after the text block */
+        
+        /* Enable manual horizontal scrolling */
+        overflow-x: scroll; 
+        overflow-y: hidden;
+        
+        /* Add padding to the sides to show the edges of the first/last card */
+        padding: 0 var(--spacing-md); 
+        
+        /* Optional: Hide scrollbar and enable snapping */
+        -ms-overflow-style: none;
+        scrollbar-width: none;
+    }
+    .packages-card-scroller::-webkit-scrollbar {
+        display: none;
+    }
+    
+    .packages-grid {
+        animation: none; /* CRITICAL: Disable the looping animation */
+        width: auto; 
+        flex-wrap: nowrap; /* Keep cards in a single row */
+        scroll-snap-type: x mandatory; /* Enable snap scroll */
+        padding-bottom: var(--spacing-sm); /* Add padding for visual balance */
+    }
+
+    /* CARD SIZE ADJUSTMENT */
+    .package-card {
+        flex-shrink: 0;
+        width: 85vw; /* Make card wider on mobile */
+        height: 360px;
+        scroll-snap-align: start;
+    }
+}
+
+
+/* ============================================== */
+/* SMALL MOBILE RESPONSIVENESS (MAX-WIDTH: 480px) */
+/* ============================================== */
+@media (max-width: 480px) {
+    .packages-section {
+        padding-top: 60px;
+        padding-bottom: 60px;
+    }
+    
+    .packages-title {
+        font-size: 80px; 
+    }
+    
+    .packages-card-scroller {
+        /* Reduce scroll padding on very small screens */
+        padding: 0 var(--spacing-sm); 
+    }
+}
