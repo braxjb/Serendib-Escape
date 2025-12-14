@@ -1,14 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q8W09JKXF3"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-Q8W09JKXF3');
-    </script>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     
@@ -204,85 +196,88 @@
                             </p>
                         </div>
                         
-                        <form class="con-form"
-      id="contact-form"
-      name="contact"
+                        <form class="con-form" 
+      id="contact-form" 
+      aria-label="Contact form"
+      name="contact-form"
       method="POST"
       data-netlify="true"
-      netlify-honeypot="bot-field"
-      aria-label="Contact form">
-
-    <!-- REQUIRED hidden form name -->
-    <input type="hidden" name="form-name" value="contact">
-
-    <!-- Honeypot field (spam protection) -->
-    <p hidden>
-        <label>
-            Don’t fill this out:
-            <input name="bot-field">
-        </label>
-    </p>
-
+      netlify-honeypot="bot-field">
+    
+    <!-- Hidden Netlify form name field -->
+    <input type="hidden" name="form-name" value="contact-form">
+    
+    <!-- Honeypot field for spam filtering (hidden from users) -->
+    <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+        <label for="bot-field">Don't fill this out if you're human:</label>
+        <input id="bot-field" name="bot-field" />
+    </div>
+    
     <div class="con-form-row">
         <div class="con-form-group">
             <label for="first-name" class="con-form-label">
                 First Name <span>*</span>
             </label>
-            <input type="text"
-                   id="first-name"
+            <input type="text" 
+                   id="first-name" 
                    name="first_name"
                    class="con-form-input"
                    placeholder="Your first name"
-                   required>
+                   required
+                   aria-required="true">
         </div>
-
+        
         <div class="con-form-group">
             <label for="last-name" class="con-form-label">
                 Last Name <span>*</span>
             </label>
-            <input type="text"
-                   id="last-name"
+            <input type="text" 
+                   id="last-name" 
                    name="last_name"
                    class="con-form-input"
                    placeholder="Your last name"
-                   required>
+                   required
+                   aria-required="true">
         </div>
     </div>
-
+    
     <div class="con-form-row">
         <div class="con-form-group">
             <label for="email" class="con-form-label">
                 Email Address <span>*</span>
             </label>
-            <input type="email"
-                   id="email"
+            <input type="email" 
+                   id="email" 
                    name="email"
                    class="con-form-input"
                    placeholder="your.email@example.com"
-                   required>
+                   required
+                   aria-required="true">
         </div>
-
+        
         <div class="con-form-group">
             <label for="phone" class="con-form-label">
                 Phone Number <span>*</span>
             </label>
-            <input type="tel"
-                   id="phone"
+            <input type="tel" 
+                   id="phone" 
                    name="phone"
                    class="con-form-input"
                    placeholder="+94 77 123 4567"
-                   required>
+                   required
+                   aria-required="true">
         </div>
     </div>
-
+    
     <div class="con-form-group">
         <label for="inquiry-type" class="con-form-label">
             Inquiry Type <span>*</span>
         </label>
-        <select id="inquiry-type"
+        <select id="inquiry-type" 
                 name="inquiry_type"
                 class="con-form-select"
-                required>
+                required
+                aria-required="true">
             <option value="" disabled selected>Select inquiry type</option>
             <option value="general">General Inquiry</option>
             <option value="tour">Tour Package</option>
@@ -292,23 +287,27 @@
             <option value="custom">Custom Itinerary</option>
         </select>
     </div>
-
+    
     <div class="con-form-group">
         <label for="travel-date" class="con-form-label">
             Tentative Travel Dates
         </label>
-        <input type="text"
-               id="travel-date"
+        <input type="text" 
+               id="travel-date" 
                name="travel_date"
                class="con-form-input"
-               placeholder="e.g., December 2024, 2 weeks">
+               placeholder="e.g., December 2024, 2 weeks"
+               aria-describedby="date-format">
+        <small id="date-format" style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">
+            Flexible dates are welcome
+        </small>
     </div>
-
+    
     <div class="con-form-group">
         <label for="travelers" class="con-form-label">
             Number of Travelers
         </label>
-        <select id="travelers"
+        <select id="travelers" 
                 name="travelers"
                 class="con-form-select">
             <option value="" selected>Select number</option>
@@ -320,44 +319,45 @@
             <option value="group">Group Travel (10+)</option>
         </select>
     </div>
-
+    
     <div class="con-form-group">
         <label for="message" class="con-form-label">
             Your Message <span>*</span>
         </label>
-        <textarea id="message"
+        <textarea id="message" 
                   name="message"
                   class="con-form-textarea"
-                  placeholder="Tell us about your dream Sri Lanka journey..."
+                  placeholder="Tell us about your dream Sri Lanka journey, interests, preferences, and any special requirements..."
                   required
+                  aria-required="true"
                   rows="6"></textarea>
     </div>
-
+    
     <div class="con-form-checkbox">
-        <input type="checkbox"
-               id="newsletter"
+        <input type="checkbox" 
+               id="newsletter" 
                name="newsletter">
         <label for="newsletter">
-            I would like to receive exclusive travel updates.
+            I would like to receive exclusive travel updates, special offers, and curated experiences from Serendib Escape.
         </label>
     </div>
-
+    
     <div class="con-form-checkbox">
-        <input type="checkbox"
-               id="privacy"
+        <input type="checkbox" 
+               id="privacy" 
                name="privacy"
-               required>
+               required
+               aria-required="true">
         <label for="privacy">
-            I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> <span>*</span>
+            I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and understand that my data will be processed in accordance with it. <span>*</span>
         </label>
     </div>
-
+    
     <button type="submit" class="con-form-submit">
         Send Message
-        <i class="fas fa-paper-plane"></i>
+        <i class="fas fa-paper-plane" aria-hidden="true"></i>
     </button>
 </form>
-
                         
                         <div class="con-success-message" id="success-message">
                             <div class="con-success-icon">
