@@ -21,33 +21,116 @@
   /* =====================
      NAVBAR + MOBILE MENU
      ===================== */
-  const NavbarController = () => {
-    if (!DOM.navbar) return;
 
-    const onScroll = () => {
-      DOM.navbar.classList.toggle('scrolled', window.scrollY > 10);
-    };
-
-    window.addEventListener('scroll', onScroll, { passive: true });
-    onScroll();
-
-    if (!DOM.hamburger || !DOM.mobileMenu) return;
-
-    DOM.hamburger.addEventListener('click', () => {
-      const active = DOM.mobileMenu.classList.toggle('active');
-      DOM.hamburger.classList.toggle('active', active);
-      document.body.style.overflow = active ? 'hidden' : 'auto';
-      DOM.hamburger.setAttribute('aria-expanded', active);
+document.addEventListener('DOMContentLoaded', () => {
+    // DOM Elements
+    const navbar = document.querySelector('.navbar');
+    const hamburger = document.querySelector('.hamburger');
+    const mobileMenuOverlay = document.getElementById('mobileMenuOverlay');
+    const mobileDropdownToggles = document.querySelectorAll('.mobile-dropdown-toggle');
+    
+    // Initialize navbar as transparent at top
+    navbar.classList.remove('scrolled');
+    
+    // Scroll effect for navbar - with threshold
+    window.addEventListener('scroll', () => {
+        // Use a small threshold (10px) to trigger the change
+        if (window.scrollY > 10) {
+            navbar.classList.add('scrolled');
+        } else {
+            navbar.classList.remove('scrolled');
+        }
     });
-
-    DOM.mobileMenu.addEventListener('click', e => {
-      if (e.target === DOM.mobileMenu) {
-        DOM.mobileMenu.classList.remove('active');
-        DOM.hamburger.classList.remove('active');
-        document.body.style.overflow = 'auto';
-      }
+    
+    // Trigger scroll check on page load in case page isn't at top
+    window.dispatchEvent(new Event('scroll'));
+    
+    // Mobile menu toggle
+    if (hamburger && mobileMenuOverlay) {
+        hamburger.addEventListener('click', () => {
+            hamburger.classList.toggle('active');
+            mobileMenuOverlay.classList.toggle('active');
+            
+            // Prevent body scrolling when menu is open
+            if (mobileMenuOverlay.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = 'auto';
+            }
+            
+            // Update aria-expanded attribute
+            hamburger.setAttribute('aria-expanded', 
+                mobileMenuOverlay.classList.contains('active'));
+        });
+        
+        // Close menu when clicking on a link
+        const mobileLinks = mobileMenuOverlay.querySelectorAll('a');
+        mobileLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                // Don't close if it's a dropdown toggle
+                if (!e.target.classList.contains('mobile-dropdown-toggle')) {
+                    mobileMenuOverlay.classList.remove('active');
+                    hamburger.classList.remove('active');
+                    document.body.style.overflow = 'auto';
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+            });
+        });
+        
+        // Close menu when clicking outside
+        mobileMenuOverlay.addEventListener('click', (e) => {
+            if (e.target === mobileMenuOverlay) {
+                mobileMenuOverlay.classList.remove('active');
+                hamburger.classList.remove('active');
+                document.body.style.overflow = 'auto';
+                hamburger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    }
+    
+    // Mobile dropdown toggle
+    mobileDropdownToggles.forEach(toggle => {
+        toggle.addEventListener('click', (e) => {
+            e.preventDefault();
+            const dropdown = toggle.parentElement;
+            dropdown.classList.toggle('active');
+            
+            // Close other dropdowns
+            document.querySelectorAll('.mobile-dropdown').forEach(other => {
+                if (other !== dropdown) other.classList.remove('active');
+            });
+        });
     });
-  };
+    
+    // Close menu on window resize (to desktop)
+    window.addEventListener('resize', () => {
+        if (window.innerWidth > 991) {
+            if (mobileMenuOverlay && mobileMenuOverlay.classList.contains('active')) {
+                mobileMenuOverlay.classList.remove('active');
+                if (hamburger) {
+                    hamburger.classList.remove('active');
+                    hamburger.setAttribute('aria-expanded', 'false');
+                }
+                document.body.style.overflow = 'auto';
+            }
+        }
+    });
+    
+    // Search functionality (placeholder)
+    const searchButtons = document.querySelectorAll('.search-icon, .mobile-search button');
+    searchButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            const searchInput = document.querySelector('.mobile-search input');
+            if (searchInput && searchInput.value.trim()) {
+                alert(`Searching for: ${searchInput.value}`);
+                searchInput.value = '';
+            } else if (!searchInput) {
+                alert('Search functionality would open a search modal.');
+            }
+        });
+    });
+});
+
 
   /* =====================
      GENERIC STEPPED CAROUSEL
@@ -159,4 +242,5 @@
   });
 
 })();
+
 
