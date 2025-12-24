@@ -266,165 +266,167 @@
                             aria-label="Contact form"
                             name="contact-form"
                             method="POST"
-                            data-netlify="true"
-                            netlify-honeypot="bot-field">
-                            
-                            <!-- Hidden Netlify form name field -->
-                            <input type="hidden" name="form-name" value="contact-form">
-                            
-                            <!-- Honeypot field for spam filtering (hidden from users) -->
-                            <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
-                                <label for="bot-field">Don't fill this out if you're human:</label>
-                                <input id="bot-field" name="bot-field" />
-                            </div>
-                            
-                            <div class="con-form-row">
-                                <div class="con-form-group">
-                                    <label for="first-name" class="con-form-label">
-                                        First Name <span>*</span>
-                                    </label>
-                                    <input type="text" 
-                                        id="first-name" 
-                                        name="first_name"
-                                        class="con-form-input"
-                                        placeholder="Your first name"
-                                        required
-                                        aria-required="true">
-                                </div>
-                                
-                                <div class="con-form-group">
-                                    <label for="last-name" class="con-form-label">
-                                        Last Name <span>*</span>
-                                    </label>
-                                    <input type="text" 
-                                        id="last-name" 
-                                        name="last_name"
-                                        class="con-form-input"
-                                        placeholder="Your last name"
-                                        required
-                                        aria-required="true">
-                                </div>
-                            </div>
-                            
-                            <div class="con-form-row">
-                                <div class="con-form-group">
-                                    <label for="email" class="con-form-label">
-                                        Email Address <span>*</span>
-                                    </label>
-                                    <input type="email" 
-                                        id="email" 
-                                        name="email"
-                                        class="con-form-input"
-                                        placeholder="your.email@example.com"
-                                        required
-                                        aria-required="true">
-                                </div>
-                                
-                                <div class="con-form-group">
-                                    <label for="phone" class="con-form-label">
-                                        Phone Number <span>*</span>
-                                    </label>
-                                    <input type="tel" 
-                                        id="phone" 
-                                        name="phone"
-                                        class="con-form-input"
-                                        placeholder="+94 77 123 4567"
-                                        pattern="^[+\d\s\-\(\)]{10,}$"
-                                        required
-                                        aria-required="true">
-                                        <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">
-        Please include your country code (e.g., +1, +44, +94)
-                                </div>
-                            </div>
-                            
+                            action="https://formsubmit.co/jonathanbraxton18@gmail.com">
+                        <!-- Hidden FormSubmit control fields -->
+                        <input type="hidden" name="_subject" value="New Inquiry - Serendib Escape">
+                        <input type="hidden" name="_template" value="table">
+                        <input type="hidden" name="_captcha" value="false">
+                        <input type="hidden" name="_honey" style="display:none">
+                        
+                        <!-- Honeypot field for spam filtering -->
+                        <div style="opacity: 0; position: absolute; top: 0; left: 0; height: 0; width: 0; z-index: -1;">
+                            <label for="bot-field">Don't fill this out if you're human:</label>
+                            <input id="bot-field" name="bot-field" />
+                        </div>
+                        
+                        <div class="con-form-row">
                             <div class="con-form-group">
-                                <label for="inquiry-type" class="con-form-label">
-                                    Inquiry Type <span>*</span>
-                                </label>
-                                <select id="inquiry-type" 
-                                        name="inquiry_type"
-                                        class="con-form-select"
-                                        required
-                                        aria-required="true">
-                                    <option value="" disabled selected>Select inquiry type</option>
-                                    <option value="general">General Inquiry</option>
-                                    <option value="tour">Tour Package</option>
-                                    <option value="accommodation">Accommodation Booking</option>
-                                    <option value="honeymoon">Honeymoon Planning</option>
-                                    <option value="corporate">Corporate Travel</option>
-                                    <option value="custom">Custom Itinerary</option>
-                                </select>
-                            </div>
-                            
-                            <div class="con-form-group">
-                                <label for="travel-date" class="con-form-label">
-                                    Tentative Travel Dates
-                                </label>
-                                <input type="text" 
-                                    id="travel-date" 
-                                    name="travel_date"
+                            <label for="first-name" class="con-form-label">
+                                First Name <span>*</span>
+                            </label>
+                            <input type="text" 
+                                    id="first-name" 
+                                    name="first_name"
                                     class="con-form-input"
-                                    placeholder="e.g., December 2024, 2 weeks"
-                                    aria-describedby="date-format">
-                                <small id="date-format" style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">
-                                    Flexible dates are welcome
-                                </small>
-                            </div>
-                            
-                            <div class="con-form-group">
-                                <label for="travelers" class="con-form-label">
-                                    Number of Travelers
-                                </label>
-                                <select id="travelers" 
-                                        name="travelers"
-                                        class="con-form-select">
-                                    <option value="" selected>Select number</option>
-                                    <option value="1">1 Traveler</option>
-                                    <option value="2">2 Travelers</option>
-                                    <option value="3-4">3-4 Travelers</option>
-                                    <option value="5-6">5-6 Travelers</option>
-                                    <option value="7+">7+ Travelers</option>
-                                    <option value="group">Group Travel (10+)</option>
-                                </select>
-                            </div>
-                            
-                            <div class="con-form-group">
-                                <label for="message" class="con-form-label">
-                                    Your Message <span>*</span>
-                                </label>
-                                <textarea id="message" 
-                                        name="message"
-                                        class="con-form-textarea"
-                                        placeholder="Tell us about your dream Sri Lanka journey, interests, preferences, and any special requirements..."
-                                        required
-                                        aria-required="true"
-                                        rows="6"></textarea>
-                            </div>
-                            
-                            <div class="con-form-checkbox">
-                                <input type="checkbox" 
-                                    id="newsletter" 
-                                    name="newsletter">
-                                <label for="newsletter">
-                                    I would like to receive exclusive travel updates, special offers, and curated experiences from Serendib Escape.
-                                </label>
-                            </div>
-                            
-                            <div class="con-form-checkbox">
-                                <input type="checkbox" 
-                                    id="privacy" 
-                                    name="privacy"
+                                    placeholder="Your first name"
                                     required
                                     aria-required="true">
-                                <label for="privacy">
-                                    I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and understand that my data will be processed in accordance with it. <span>*</span>
-                                </label>
                             </div>
                             
-                            <button type="submit" class="con-form-submit">
-                                Send Message
-                                <i class="fas fa-paper-plane" aria-hidden="true"></i>
-                            </button>
+                            <div class="con-form-group">
+                            <label for="last-name" class="con-form-label">
+                                Last Name <span>*</span>
+                            </label>
+                            <input type="text" 
+                                    id="last-name" 
+                                    name="last_name"
+                                    class="con-form-input"
+                                    placeholder="Your last name"
+                                    required
+                                    aria-required="true">
+                            </div>
+                        </div>
+                        
+                        <div class="con-form-row">
+                            <div class="con-form-group">
+                            <label for="email" class="con-form-label">
+                                Email Address <span>*</span>
+                            </label>
+                            <input type="email" 
+                                    id="email" 
+                                    name="email"
+                                    class="con-form-input"
+                                    placeholder="your.email@example.com"
+                                    required
+                                    aria-required="true">
+                            </div>
+                            
+                            <div class="con-form-group">
+                            <label for="phone" class="con-form-label">
+                                Phone Number <span>*</span>
+                            </label>
+                            <input type="tel" 
+                                    id="phone" 
+                                    name="phone"
+                                    class="con-form-input"
+                                    placeholder="+94 77 123 4567"
+                                    pattern="^[+\d\s\-\(\)]{10,}$"
+                                    required
+                                    aria-required="true">
+                            <small style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">
+                                Please include your country code (e.g., +1, +44, +94)
+                            </small>
+                            </div>
+                        </div>
+                        
+                        <div class="con-form-group">
+                            <label for="inquiry-type" class="con-form-label">
+                            Inquiry Type <span>*</span>
+                            </label>
+                            <select id="inquiry-type" 
+                                    name="inquiry_type"
+                                    class="con-form-select"
+                                    required
+                                    aria-required="true">
+                            <option value="" disabled selected>Select inquiry type</option>
+                            <option value="general">General Inquiry</option>
+                            <option value="tour">Tour Package</option>
+                            <option value="accommodation">Accommodation Booking</option>
+                            <option value="honeymoon">Honeymoon Planning</option>
+                            <option value="corporate">Corporate Travel</option>
+                            <option value="custom">Custom Itinerary</option>
+                            </select>
+                        </div>
+                        
+                        <div class="con-form-group">
+                            <label for="travel-date" class="con-form-label">
+                            Tentative Travel Dates
+                            </label>
+                            <input type="text" 
+                                id="travel-date" 
+                                name="travel_date"
+                                class="con-form-input"
+                                placeholder="e.g., December 2024, 2 weeks"
+                                aria-describedby="date-format">
+                            <small id="date-format" style="color: rgba(255, 255, 255, 0.5); font-size: 0.85rem; margin-top: 5px;">
+                            Flexible dates are welcome
+                            </small>
+                        </div>
+                        
+                        <div class="con-form-group">
+                            <label for="travelers" class="con-form-label">
+                            Number of Travelers
+                            </label>
+                            <select id="travelers" 
+                                    name="travelers"
+                                    class="con-form-select">
+                            <option value="" selected>Select number</option>
+                            <option value="1">1 Traveler</option>
+                            <option value="2">2 Travelers</option>
+                            <option value="3-4">3-4 Travelers</option>
+                            <option value="5-6">5-6 Travelers</option>
+                            <option value="7+">7+ Travelers</option>
+                            <option value="group">Group Travel (10+)</option>
+                            </select>
+                        </div>
+                        
+                        <div class="con-form-group">
+                            <label for="message" class="con-form-label">
+                            Your Message <span>*</span>
+                            </label>
+                            <textarea id="message" 
+                                    name="message"
+                                    class="con-form-textarea"
+                                    placeholder="Tell us about your dream Sri Lanka journey, interests, preferences, and any special requirements..."
+                                    required
+                                    aria-required="true"
+                                    rows="6"></textarea>
+                        </div>
+                        
+                        <div class="con-form-checkbox">
+                            <input type="checkbox" 
+                                id="newsletter" 
+                                name="newsletter">
+                            <label for="newsletter">
+                            I would like to receive exclusive travel updates, special offers, and curated experiences from Serendib Escape.
+                            </label>
+                        </div>
+                        
+                        <div class="con-form-checkbox">
+                            <input type="checkbox" 
+                                id="privacy" 
+                                name="privacy"
+                                required
+                                aria-required="true">
+                            <label for="privacy">
+                            I agree to the <a href="/privacy" target="_blank">Privacy Policy</a> and understand that my data will be processed in accordance with it. <span>*</span>
+                            </label>
+                        </div>
+                        
+                        <button type="submit" class="con-form-submit">
+                            Send Message
+                            <i class="fas fa-paper-plane" aria-hidden="true"></i>
+                        </button>
                         </form>
                         
                         <div class="con-success-message" id="success-message">
@@ -1026,4 +1028,5 @@ document.addEventListener('DOMContentLoaded', () => {
 });
     </script>
 </body>
+
 </html>
